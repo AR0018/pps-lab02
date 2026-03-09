@@ -22,18 +22,16 @@ object Task3 extends App:
   println(positiveMethod(-1))
 
   // b)
-  println("Part B")
+  println("\n\nPart B")
 
   // Versione iniziale del neg
   val verboseNeg: (String => Boolean) => String => Boolean = (f: String => Boolean) => (s:String) => s match
     case s if f(s) => false
     case _ => true
 
-  // Versione compatta e più elegante di neg. "f" è la funzione di tipo String => Boolean e "_ match ..." è una lambda
-  // che, a partire da una stringa di input, genera un valore booleano
-  val neg: (String => Boolean) => String => Boolean = f => _ match
-    case s if f(s) => false
-    case _ => true
+  // Versione compatta e più elegante di neg. "f" è la funzione di tipo String => Boolean e "!f(_)" è una lambda
+  // che, a partire da una stringa di input, genera un valore booleano che è l'opposto di quello restituito da f
+  val neg: (String => Boolean) => String => Boolean = f => !f(_)
 
   println("Function literal:")
   val empty: String => Boolean = _ == "" // predicate on strings
@@ -42,9 +40,7 @@ object Task3 extends App:
   println(notEmpty("")) // false
   println(notEmpty("foo") && !notEmpty("")) // true.. a comprehensive test
 
-  def negMethod(f:String => Boolean): String => Boolean = _ match
-    case s if f(s) => false
-    case _ => true
+  def negMethod(f:String => Boolean): String => Boolean = !f(_)
 
   println("Method:")
   val notEmptyMethod = negMethod(empty) // which type of notEmpty?
