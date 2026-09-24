@@ -7,7 +7,7 @@ object Task8 extends App:
     @tailrec
     def reverse(remainingDigits: Int, currentReversed: Int): Int = remainingDigits match
       case 0 => currentReversed
-      case _ => reverse(remainingDigits / 10, currentReversed * base + remainingDigits % base)
+      case _ => reverse(remainingDigits / base, currentReversed * base + remainingDigits % base)
     reverse(n, 0)
 
   println(reverseNumber(12345)) //54321
