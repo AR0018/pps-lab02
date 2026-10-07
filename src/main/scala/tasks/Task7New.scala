@@ -2,7 +2,7 @@ package tasks
 
 import scala.annotation.tailrec
 
-object Task7New extends App {
+object Task7New extends App:
   def power(base: Double, exponent: Int): Double = exponent match
     case 0 => 1
     case _ => base * power(base, exponent - 1)
@@ -17,4 +17,3 @@ object Task7New extends App {
 
   println((power(2, 3), power(5, 2))) // (8.0, 25.0)
   println((powerTailrec(2, 3), powerTailrec(5, 2))) // (8.0, 25.0)
-}
